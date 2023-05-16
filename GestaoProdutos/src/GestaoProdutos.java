@@ -146,3 +146,4 @@ public class GestaoProdutos {
 		frame.getContentPane().add(btnExcluir);
 	}
 }
+
