@@ -30,14 +30,14 @@ public class Produto {
 	public int getQtd() {
 		return qtd;
 	}
-	public void setQtd(int qtd) {
-		this.qtd = qtd;
+	public void setQtd(int qtd2) {
+		this.qtd = qtd2;
 	}
 	public double getPreco() {
 		return preco;
 	}
-	public void setPreco(double d) {
-		this.preco = d;
+	public void setPreco(double preco2) {
+		this.preco = preco2;
 	}
 	
 	

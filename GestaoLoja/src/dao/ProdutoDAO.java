@@ -8,7 +8,7 @@ import controller.ConnectionFactory;
 public class ProdutoDAO {
 	
 	public void salvar(Produto produto) {
-		String sql = "insert into produto(nome,quantidade,preco)values(?,?,?)";
+		String sql = "insert into produtos(nome,descricao,quantidade,preco)values(?,?,?,?)";
 		
 		Connection con = null;
 		PreparedStatement pst = null;
@@ -24,7 +24,7 @@ public class ProdutoDAO {
 				pst.setString(1, produto.getNome());
 				pst.setString(2, produto.getDesc());
 				pst.setInt(3, produto.getQtd());
-				//pst.setDouble(4, produto.getPreco());
+				pst.setDouble(4, produto.getPreco());
 				
 				//Executa a query
 				pst.executeUpdate();
