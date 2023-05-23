@@ -1,163 +1,382 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package view;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.Produto;
 import dao.ProdutoDAO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import java.awt.EventQueue;
+/**
+ *
+ * @author jdelgado
+ */
+public final class ProdutoView extends javax.swing.JFrame {
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.EtchedBorder;
-import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+    /**
+     * Creates new form ViewJTable
+     * @throws java.lang.Exception
+     */
+    public ProdutoView() throws Exception {
+        initComponents();
+        DefaultTableModel modelo = (DefaultTableModel) jTProdutos.getModel();
+        jTProdutos.setRowSorter(new TableRowSorter(modelo));
 
-public class ProdutoView {
+        readJTable();
 
-	private JFrame frame;
-	private JTextField txtpnome;
-	private JTextField txtdesc;
-	private JTextField txtqtd;
-	private JTextField txtpreco;
-	private JTextField textField;
+    }
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ProdutoView window = new ProdutoView();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    public void readJTable() throws Exception {
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTProdutos.getModel();
+        modelo.setNumRows(0);
+        ProdutoDAO pdao = new ProdutoDAO();
 
-	/**
-	 * Create the application.
-	 */
-	public ProdutoView() {
-		initialize();
-	}
+        for (Produto p : pdao.read()) {
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 838, 475);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Cadastro de Produtos", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(10, 32, 804, 183);
-		frame.getContentPane().add(panel);
-		panel.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Nome Produto");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(24, 35, 110, 17);
-		panel.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Descrição");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(24, 68, 110, 17);
-		panel.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("Quantidade");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_1_1.setBounds(24, 105, 110, 17);
-		panel.add(lblNewLabel_1_1);
-		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Preço");
-		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_1_1_1.setBounds(24, 133, 110, 17);
-		panel.add(lblNewLabel_1_1_1);
-		
-		txtpnome = new JTextField();
-		txtpnome.setBounds(150, 35, 249, 20);
-		panel.add(txtpnome);
-		txtpnome.setColumns(10);
-		
-		txtdesc = new JTextField();
-		txtdesc.setColumns(10);
-		txtdesc.setBounds(150, 68, 249, 20);
-		panel.add(txtdesc);
-		
-		txtqtd = new JTextField();
-		txtqtd.setColumns(10);
-		txtqtd.setBounds(150, 99, 249, 20);
-		panel.add(txtqtd);
-		
-		txtpreco = new JTextField();
-		txtpreco.setColumns(10);
-		txtpreco.setBounds(150, 130, 249, 20);
-		panel.add(txtpreco);
-		
-		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				ProdutoDAO produtoDAO = new ProdutoDAO();
-				
-				String pnome, desc, preco, qtd;
-				
-				
-				pnome = txtpnome.getText();
-				desc = txtdesc.getText();
-				qtd = txtqtd.getText();
-				preco = txtpreco.getText();
-				
-				Produto produto = new Produto();
-				produto.setNome(pnome);
-				produto.setDesc(desc);
-				produto.setQtd(Integer.parseInt(qtd));
-				produto.setPreco(Double.parseDouble(preco));
-				
-				produtoDAO.salvar(produto);
-				
-			}
-		});
-		btnSalvar.setBounds(510, 57, 226, 69);
-		panel.add(btnSalvar);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Procurar", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBounds(10, 214, 804, 82);
-		frame.getContentPane().add(panel_1);
-		
-		JLabel lblIdDoProduto = new JLabel("ID do produto");
-		lblIdDoProduto.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblIdDoProduto.setBounds(24, 35, 110, 17);
-		panel_1.add(lblIdDoProduto);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(150, 35, 249, 20);
-		panel_1.add(textField);
-		
-		JButton btnAtualizar = new JButton("Atualizar");
-		btnAtualizar.setBounds(451, 23, 150, 44);
-		panel_1.add(btnAtualizar);
-		
-		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(617, 23, 150, 44);
-		panel_1.add(btnExcluir);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(13, 307, 797, 120);
-		frame.getContentPane().add(scrollPane);
-	}
+            modelo.addRow(new Object[]{
+                p.getId(),
+                p.getNome(),
+                p.getDesc(),
+                p.getQtd(),
+                p.getPreco()
+            });
+
+        }
+
+    }
+    public void readJTableForDesc(String desc) throws Exception {
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTProdutos.getModel();
+        modelo.setNumRows(0);
+        ProdutoDAO pdao = new ProdutoDAO();
+
+        for (Produto p : pdao.readForDesc(desc)) {
+
+            modelo.addRow(new Object[]{
+                p.getId(),
+                p.getNome(),
+                p.getDesc(),
+                p.getQtd(),
+                p.getPreco()
+            });
+
+        }
+
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form. WARNING: Do NOT modify this code. The content of this method is always regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTProdutos = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        txtQtd = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtPreco = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtpnome = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtDesc = new javax.swing.JTextField();
+        txtBuscaDesc = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTProdutos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome","Descrição", "Quantidade", "Preço"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTProdutosMouseClicked(evt);
+            }
+        });
+        jTProdutos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTProdutosKeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTProdutos);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 358, 650, 280));
+
+        jLabel2.setText("Quantidade");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 120, -1));
+        getContentPane().add(txtQtd, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 215, 25));
+
+        jLabel3.setText("Preço");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 120, -1));
+
+        txtPreco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 213, 25));
+
+        jLabel4.setText("Nome");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 120, -1));
+
+        txtpnome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpnomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtpnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 213, 25));
+
+        jLabel1.setText("Descrição");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 120, -1));
+        getContentPane().add(txtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 213, 25));
+        getContentPane().add(txtBuscaDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 327, -1));
+
+        jButton4.setText("Buscar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 130, 40));
+
+        jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 130, 40));
+
+        jButton2.setText("Excluir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 130, 40));
+
+        jButton3.setText("Atualizar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 130, 40));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel5.setText("Cadastro de Produtos");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 255, 590, 10));
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jTProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTProdutosMouseClicked
+        // TODO add your handling code here:
+
+        if (jTProdutos.getSelectedRow() != -1) {
+            txtpnome.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 1).toString());
+            txtDesc.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 2).toString());
+            txtQtd.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 3).toString());
+            txtPreco.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 4).toString());
+
+        }
+
+    }//GEN-LAST:event_jTProdutosMouseClicked
+
+    private void jTProdutosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTProdutosKeyReleased
+        // TODO add your handling code here:
+
+        if (jTProdutos.getSelectedRow() != -1) {
+
+            txtpnome.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 1).toString());
+            txtDesc.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 2).toString());
+            txtQtd.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 3).toString());
+            txtPreco.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 4).toString());
+
+        }
+
+    }//GEN-LAST:event_jTProdutosKeyReleased
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            // TODO add your handling code here:
+
+            readJTableForDesc(txtBuscaDesc.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void txtpnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpnomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpnomeActionPerformed
+
+    private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecoActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+
+        if (jTProdutos.getSelectedRow() != -1) {
+
+            Produto p = new Produto();
+            ProdutoDAO dao = new ProdutoDAO();
+
+            p.setNome(txtpnome.getText());
+            p.setDesc(txtDesc.getText());
+            p.setQtd(Integer.parseInt(txtQtd.getText()));
+            p.setPreco(Double.parseDouble(txtPreco.getText()));
+            p.setId((int) jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 0));
+            try {
+                dao.update(p);
+            } catch (Exception ex) {
+                Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            txtDesc.setText("");
+            txtQtd.setText("");
+            txtPreco.setText("");
+
+            try {
+                readJTable();
+            } catch (Exception ex) {
+                Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+
+        //        System.out.println("Linha selecionada: "+jTProdutos.getSelectedRow());
+        if (jTProdutos.getSelectedRow() != -1) {
+
+            Produto p = new Produto();
+            ProdutoDAO dao = new ProdutoDAO();
+
+            p.setId((int) jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 0));
+
+            try {
+                dao.delete(p);
+            } catch (Exception ex) {
+                Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            txtpnome.setText("");
+            txtDesc.setText("");
+            txtQtd.setText("");
+            txtPreco.setText("");
+
+            try {
+                readJTable();
+            } catch (Exception ex) {
+                Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.");
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        Produto p = new Produto();
+        ProdutoDAO dao = new ProdutoDAO();
+
+        p.setNome(txtpnome.getText());
+        p.setDesc(txtDesc.getText());
+        p.setQtd(Integer.parseInt(txtQtd.getText()));
+        p.setPreco(Double.parseDouble(txtPreco.getText()));
+        try {
+            dao.create(p);
+        } catch (Exception ex) {
+            Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        txtpnome.setText("");
+        txtDesc.setText("");
+        txtQtd.setText("");
+        txtPreco.setText("");
+
+        try {
+            readJTable();
+
+            //        DefaultTableModel dtmProdutos = (DefaultTableModel) jTProdutos.getModel();
+            //        Object[] dados = {txtDesc.getText(), txtQtd.getText(), txtPreco.getText()};
+            //        dtmProdutos.addRow(dados);
+        } catch (Exception ex) {
+            Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new ProdutoView().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTProdutos;
+    private javax.swing.JTextField txtBuscaDesc;
+    private javax.swing.JTextField txtDesc;
+    private javax.swing.JTextField txtPreco;
+    private javax.swing.JTextField txtQtd;
+    private javax.swing.JTextField txtpnome;
+    // End of variables declaration//GEN-END:variables
 }
