@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class ConnectionFactory {
 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost/gestaoloja";
+    private static final String URL = "jdbc:mysql://localhost/lojazezinho";
     private static final String USER = "root";
     private static final String PASS = "1234";
 

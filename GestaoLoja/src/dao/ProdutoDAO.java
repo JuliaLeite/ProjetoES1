@@ -132,6 +132,7 @@ public class ProdutoDAO {
             pst.setString(2, p.getDesc());
             pst.setInt(3, p.getQtd());
             pst.setDouble(4, p.getPreco());
+            pst.setInt(5, p.getId());
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
@@ -162,5 +163,6 @@ public class ProdutoDAO {
         }
 
     }
+
 
 }
