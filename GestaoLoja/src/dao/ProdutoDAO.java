@@ -82,6 +82,33 @@ public class ProdutoDAO {
         return produtos;
 
     }
+    public Produto getProdutoById(int id) throws Exception {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        Produto produto = null;
+
+        try {
+            pst = con.prepareStatement("SELECT * FROM produtos WHERE id = ?");
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                produto = new Produto();
+                produto.setId(rs.getInt("id"));
+                produto.setNome(rs.getString("nome"));
+                produto.setDesc(rs.getString("descricao"));
+                produto.setQtd(rs.getInt("quantidade"));
+                produto.setPreco(rs.getDouble("preco"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, pst, rs);
+        }
+
+        return produto;
+    }   
     public List<Produto> readForDesc(String desc) throws Exception {
 
         Connection con = ConnectionFactory.getConnection();
