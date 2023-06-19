@@ -8,7 +8,7 @@ O projeto possui as seguintes funcionalidades principais:
 
 1. Cadastro de Funcionários:
 - Adição, edição e remoção de funcionários;
-- Registro de informações como nome, cargo, salário, data de admissão, etc.
+- Registro de informações como nome, cargo, salário, etc.
 
 2. Cadastro de Produtos:
 - Adição, edição e remoção de produtos;
