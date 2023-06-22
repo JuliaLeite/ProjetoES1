@@ -81,14 +81,14 @@ public final class FuncionarioView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtSalario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtpnome = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        txtfnome = new javax.swing.JTextField();
+        LabelCargo = new javax.swing.JLabel();
         txtCargo = new javax.swing.JTextField();
         txtBuscaCargo = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ButtonBuscar = new javax.swing.JButton();
+        ButtonCadastrar = new javax.swing.JButton();
+        ButtonExcluir = new javax.swing.JButton();
+        ButtonAtualizar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
@@ -138,49 +138,49 @@ public final class FuncionarioView extends javax.swing.JFrame {
         jLabel4.setText("Nome");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 120, -1));
 
-        txtpnome.addActionListener(new java.awt.event.ActionListener() {
+        txtfnome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpnomeActionPerformed(evt);
+                txtfnomeActionPerformed(evt);
             }
         });
-        getContentPane().add(txtpnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 213, 25));
+        getContentPane().add(txtfnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 213, 25));
 
-        jLabel1.setText("Cargo");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 120, -1));
+        LabelCargo.setText("Cargo");
+        getContentPane().add(LabelCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 120, -1));
         getContentPane().add(txtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 213, 25));
         getContentPane().add(txtBuscaCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 327, -1));
 
-        jButton4.setText("Buscar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        ButtonBuscar.setText("Buscar");
+        ButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                ButtonBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 130, 40));
+        getContentPane().add(ButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 130, 40));
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonCadastrar.setText("Cadastrar");
+        ButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ButtonCadastrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 130, 40));
+        getContentPane().add(ButtonCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 130, 40));
 
-        jButton2.setText("Excluir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ButtonExcluir.setText("Excluir");
+        ButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ButtonExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 130, 40));
+        getContentPane().add(ButtonExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 130, 40));
 
-        jButton3.setText("Atualizar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ButtonAtualizar.setText("Atualizar");
+        ButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ButtonAtualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 130, 40));
+        getContentPane().add(ButtonAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 130, 40));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel5.setText("Cadastro de Funcionarios");
@@ -195,7 +195,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (jTFuncionarios.getSelectedRow() != -1) {
-            txtpnome.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 1).toString());
+            txtfnome.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 1).toString());
             txtCargo.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 2).toString());
             txtSalario.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 3).toString());
 
@@ -208,7 +208,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
 
         if (jTFuncionarios.getSelectedRow() != -1) {
 
-            txtpnome.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 1).toString());
+            txtfnome.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 1).toString());
             txtCargo.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 2).toString());
             txtSalario.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 3).toString());
 
@@ -216,7 +216,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTFuncionariosKeyReleased
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void ButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarActionPerformed
         try {
             // TODO add your handling code here:
 
@@ -226,17 +226,17 @@ public final class FuncionarioView extends javax.swing.JFrame {
         }
         
         
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_ButtonBuscarActionPerformed
 
-    private void txtpnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpnomeActionPerformed
+    private void txtfnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfnomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtpnomeActionPerformed
+    }//GEN-LAST:event_txtfnomeActionPerformed
 
     private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSalarioActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAtualizarActionPerformed
         // TODO add your handling code here:
 
         if (jTFuncionarios.getSelectedRow() != -1) {
@@ -244,7 +244,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
           Funcionario f = new Funcionario();
           FuncionarioDAO fdao = new FuncionarioDAO();
 
-            f.setNome(txtpnome.getText());
+            f.setNome(txtfnome.getText());
             f.setCargo(txtCargo.getText());
             f.setSalario(Double.parseDouble(txtSalario.getText()));
             f.setId((int) jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 0));
@@ -265,9 +265,9 @@ public final class FuncionarioView extends javax.swing.JFrame {
 
         }
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ButtonAtualizarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
         // TODO add your handling code here:
 
         //        System.out.println("Linha selecionada: "+jTFuncionarios.getSelectedRow());
@@ -284,7 +284,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
                 Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            txtpnome.setText("");
+            txtfnome.setText("");
             txtCargo.setText("");
             txtSalario.setText("");
 
@@ -298,15 +298,15 @@ public final class FuncionarioView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione um para excluir.");
         }
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ButtonExcluirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCadastrarActionPerformed
         // TODO add your handling code here:
 
       Funcionario f = new Funcionario();
       FuncionarioDAO fdao = new FuncionarioDAO();
 
-        f.setNome(txtpnome.getText());
+        f.setNome(txtfnome.getText());
         f.setCargo(txtCargo.getText());
         f.setSalario(Double.parseDouble(txtSalario.getText()));
         try {
@@ -315,7 +315,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
             Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        txtpnome.setText("");
+        txtfnome.setText("");
         txtCargo.setText("");
         txtSalario.setText("");
 
@@ -328,7 +328,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ButtonCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -347,11 +347,11 @@ public final class FuncionarioView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton ButtonAtualizar;
+    private javax.swing.JButton ButtonBuscar;
+    private javax.swing.JButton ButtonCadastrar;
+    private javax.swing.JButton ButtonExcluir;
+    private javax.swing.JLabel LabelCargo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -361,6 +361,6 @@ public final class FuncionarioView extends javax.swing.JFrame {
     private javax.swing.JTextField txtBuscaCargo;
     private javax.swing.JTextField txtCargo;
     private javax.swing.JTextField txtSalario;
-    private javax.swing.JTextField txtpnome;
+    private javax.swing.JTextField txtfnome;
     // End of variables declaration//GEN-END:variables
 }
