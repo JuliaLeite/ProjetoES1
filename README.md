@@ -6,9 +6,9 @@ Este repositório contém o código-fonte e a documentação para um projeto de 
 ## Funcionalidades
 O projeto possui as seguintes funcionalidades principais:
 
-1. Cadastro de Funcionários:
-- Adição, edição e remoção de funcionários;
-- Registro de informações como nome, cargo, salário, etc.
+1. Cadastro de Usuarios e Gerência:
+- Adição, edição e remoção de usuários;
+- Registro de informações como nome, senha.
 
 2. Cadastro de Produtos:
 - Adição, edição e remoção de produtos;
