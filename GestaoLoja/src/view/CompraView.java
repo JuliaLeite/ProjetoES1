@@ -12,7 +12,7 @@ import model.Produto;
 public class CompraView extends JFrame {
     private JTable tableProdutos;
     private DefaultTableModel tableModel;
-    private JButton buttonVender;
+    private JButton buttonComprar;
     private JLabel labelMensagem;
     private JTextField textFieldBusca;
 
@@ -46,14 +46,14 @@ public class CompraView extends JFrame {
         });
         add(buttonBuscar, BorderLayout.WEST);
 
-        buttonVender = new JButton("Vender");
-        buttonVender.addActionListener(new ActionListener() {
+        buttonComprar = new JButton("Comprar");
+        buttonComprar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 venderProduto();
             }
         });
-        add(buttonVender, BorderLayout.SOUTH);
+        add(buttonComprar, BorderLayout.SOUTH);
 
         labelMensagem = new JLabel("");
         add(labelMensagem, BorderLayout.NORTH);
