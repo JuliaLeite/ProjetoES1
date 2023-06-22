@@ -32,6 +32,7 @@ public class CadastroView extends JFrame {
         buttonCadastrar = new JButton("Cadastrar");
 
         buttonCadastrar.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 String usuario = textFieldUsuario.getText();
                 String senha = String.valueOf(passwordFieldSenha.getPassword());
@@ -65,6 +66,7 @@ public class CadastroView extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 CadastroView cadastroView = new CadastroView();
                 cadastroView.setVisible(true);

@@ -14,7 +14,7 @@ public class MenuPrincipal extends JFrame {
     private JMenuItem jMenuItemProdutos;
     private JMenuItem jMenuItemFuncionarios;
 
-    private Connection connection;
+    private final Connection connection;
 
     public MenuPrincipal(Connection connection) {
         this.connection = connection;
@@ -31,6 +31,7 @@ public class MenuPrincipal extends JFrame {
         setTitle("Menu Principal");
 
         jMenuItemProdutos.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 try {
                     ProdutoView produtoView = new ProdutoView();
@@ -43,6 +44,7 @@ public class MenuPrincipal extends JFrame {
 
 
         jMenuItemFuncionarios.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 try {
                     FuncionarioView funcionarioView = new FuncionarioView();
@@ -66,6 +68,7 @@ public class MenuPrincipal extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 try {
                     Connection connection = ConnectionFactory.getConnection();

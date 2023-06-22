@@ -89,10 +89,10 @@ public final class ProdutoView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtDesc = new javax.swing.JTextField();
         txtBuscaDesc = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ButtonBuscar = new javax.swing.JButton();
+        ButtonCadastrar = new javax.swing.JButton();
+        ButtonExcluir = new javax.swing.JButton();
+        ButtonATualizar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
@@ -104,11 +104,11 @@ public final class ProdutoView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome","Descrição", "Quantidade", "Preço"
+                "ID", "DESCRIÇÃO", "QTD", "PREÇO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -156,39 +156,45 @@ public final class ProdutoView extends javax.swing.JFrame {
         jLabel1.setText("Descrição");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 120, -1));
         getContentPane().add(txtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 213, 25));
+
+        txtBuscaDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscaDescActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtBuscaDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 327, -1));
 
-        jButton4.setText("Buscar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        ButtonBuscar.setText("Buscar");
+        ButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                ButtonBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 130, 40));
+        getContentPane().add(ButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 130, 40));
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonCadastrar.setText("Cadastrar");
+        ButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ButtonCadastrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 130, 40));
+        getContentPane().add(ButtonCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 130, 40));
 
-        jButton2.setText("Excluir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ButtonExcluir.setText("Excluir");
+        ButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ButtonExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 130, 40));
+        getContentPane().add(ButtonExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 130, 40));
 
-        jButton3.setText("Atualizar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ButtonATualizar.setText("Atualizar");
+        ButtonATualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ButtonATualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 130, 40));
+        getContentPane().add(ButtonATualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 130, 40));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel5.setText("Cadastro de Produtos");
@@ -226,7 +232,7 @@ public final class ProdutoView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTProdutosKeyReleased
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void ButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarActionPerformed
         try {
             // TODO add your handling code here:
 
@@ -236,7 +242,7 @@ public final class ProdutoView extends javax.swing.JFrame {
         }
         
         
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_ButtonBuscarActionPerformed
 
     private void txtpnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpnomeActionPerformed
         // TODO add your handling code here:
@@ -246,7 +252,7 @@ public final class ProdutoView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ButtonATualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonATualizarActionPerformed
         // TODO add your handling code here:
 
         if (jTProdutos.getSelectedRow() != -1) {
@@ -277,9 +283,9 @@ public final class ProdutoView extends javax.swing.JFrame {
 
         }
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ButtonATualizarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
         // TODO add your handling code here:
 
         //        System.out.println("Linha selecionada: "+jTProdutos.getSelectedRow());
@@ -311,9 +317,9 @@ public final class ProdutoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.");
         }
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ButtonExcluirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCadastrarActionPerformed
         // TODO add your handling code here:
 
         Produto p = new Produto();
@@ -343,7 +349,11 @@ public final class ProdutoView extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ButtonCadastrarActionPerformed
+
+    private void txtBuscaDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaDescActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscaDescActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,10 +371,10 @@ public final class ProdutoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton ButtonATualizar;
+    private javax.swing.JButton ButtonBuscar;
+    private javax.swing.JButton ButtonCadastrar;
+    private javax.swing.JButton ButtonExcluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

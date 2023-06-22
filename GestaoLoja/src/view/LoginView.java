@@ -35,6 +35,7 @@ public class LoginView extends JFrame {
         buttonCadastro = new JButton("Cadastrar");
 
         buttonLogin.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 String usuario = textFieldUsuario.getText();
                 String senha = String.valueOf(passwordFieldSenha.getPassword());
@@ -68,6 +69,7 @@ public class LoginView extends JFrame {
 
 
         buttonCadastro.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 CadastroView cadastroView = new CadastroView();
                 cadastroView.setVisible(true);
@@ -92,6 +94,7 @@ public class LoginView extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 LoginView loginView = new LoginView();
                 loginView.setVisible(true);

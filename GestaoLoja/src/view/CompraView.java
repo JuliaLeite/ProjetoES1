@@ -16,7 +16,7 @@ public class CompraView extends JFrame {
     private JLabel labelMensagem;
     private JTextField textFieldBusca;
 
-    private ProdutoDAO produtoDAO;
+    private final ProdutoDAO produtoDAO;
 
     public CompraView() {
         produtoDAO = new ProdutoDAO();
@@ -124,6 +124,7 @@ public class CompraView extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 CompraView compraView = new CompraView();
                 compraView.setVisible(true);
