@@ -17,7 +17,6 @@ O projeto possui as seguintes funcionalidades principais:
 3. Controle de Caixa:
 - Registro de vendas realizadas;
 - Atualização do saldo de caixa;
-- Relatórios de vendas e total de vendas.
 
 ## Tecnologias Utilizadas
 O projeto foi desenvolvido utilizando as seguintes tecnologias:
