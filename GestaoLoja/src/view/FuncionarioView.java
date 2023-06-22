@@ -194,7 +194,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
     private void jTFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFuncionariosMouseClicked
         // TODO add your handling code here:
 
-        if (j.getSelectedRow() != -1) {
+        if (jTFuncionarios.getSelectedRow() != -1) {
             txtpnome.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 1).toString());
             txtCargo.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 2).toString());
             txtSalario.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 3).toString());
@@ -206,7 +206,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
     private void jTFuncionariosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFuncionariosKeyReleased
         // TODO add your handling code here:
 
-        if (j.getSelectedRow() != -1) {
+        if (jTFuncionarios.getSelectedRow() != -1) {
 
             txtpnome.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 1).toString());
             txtCargo.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 2).toString());
@@ -270,7 +270,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-        //        System.out.println("Linha selecionada: "+j.getSelectedRow());
+        //        System.out.println("Linha selecionada: "+jTFuncionarios.getSelectedRow());
         if (jTFuncionarios.getSelectedRow() != -1) {
 
           Funcionario f = new Funcionario();
@@ -322,7 +322,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
         try {
             readJTable();
 
-            //        DefaultTableModel dt = (DefaultTableModel) j.getModel();
+            //        DefaultTableModel dt = (DefaultTableModel) jTFuncionarios.getModel();
             //        Object[] dados = {txtDesc.getText(), txtQtd.getText(), txtSalario.getText()};
             //        dt.addRow(dados);
         } catch (Exception ex) {

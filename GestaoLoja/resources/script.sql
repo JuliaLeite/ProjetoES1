@@ -1,8 +1,23 @@
-create database gestaoloja;
+CREATE DATABASE lojazezinho;
 
-create table produtos(
-id int not null auto_increment primary key, 
-nome varchar(255),
-descricao varchar(255),
-quantidade int,
-preco double)
+CREATE TABLE produtos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
+  quantidade INT NOT NULL,
+  preco DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE usuarios (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255),
+    senha VARCHAR(255),
+    nivel_acesso VARCHAR(20)
+);
+
+CREATE TABLE funcionarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  cargo VARCHAR(255) NOT NULL,
+  salario DECIMAL(10, 2) NOT NULL
+);
