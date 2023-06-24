@@ -1,18 +1,20 @@
 package view;
 
 import controller.ConnectionFactory;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-import view.FuncionarioView;
-import view.ProdutoView;
 
 public class MenuPrincipal extends JFrame {
     private JMenuBar menuBar;
     private JMenu menuCadastros;
+    private JMenu menuOperacoes;
     private JMenuItem jMenuItemProdutos;
     private JMenuItem jMenuItemFuncionarios;
+    private JMenuItem jMenuItemCaixa;
+    private JMenuItem jMenuItemCompra;
 
     private final Connection connection;
 
@@ -24,8 +26,11 @@ public class MenuPrincipal extends JFrame {
     private void initComponents() {
         menuBar = new JMenuBar();
         menuCadastros = new JMenu("Cadastros");
+        menuOperacoes = new JMenu("Operações");
         jMenuItemProdutos = new JMenuItem("Produtos");
         jMenuItemFuncionarios = new JMenuItem("Funcionários");
+        jMenuItemCaixa = new JMenuItem("Caixa");
+        jMenuItemCompra = new JMenuItem("Compra");
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
@@ -42,7 +47,6 @@ public class MenuPrincipal extends JFrame {
             }
         });
 
-
         jMenuItemFuncionarios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -55,13 +59,42 @@ public class MenuPrincipal extends JFrame {
             }
         });
 
+        jMenuItemCaixa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                try {
+                    CaixaView caixaView = new CaixaView();
+                    caixaView.setVisible(true);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        jMenuItemCompra.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                try {
+                    CompraView compraView = new CompraView();
+                    compraView.setVisible(true);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         menuCadastros.add(jMenuItemProdutos);
         menuCadastros.add(jMenuItemFuncionarios);
+        menuOperacoes.add(jMenuItemCaixa);
+        menuOperacoes.add(jMenuItemCompra);
 
         menuBar.add(menuCadastros);
+        menuBar.add(menuOperacoes);
 
         setJMenuBar(menuBar);
+
+        setSize(600, 400);
+        setLocationRelativeTo(null);
 
         pack();
     }

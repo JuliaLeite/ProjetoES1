@@ -38,9 +38,9 @@ public class CadastroView extends JFrame {
                 String senha = String.valueOf(passwordFieldSenha.getPassword());
 
                 // cadastra o usuário
-                Usuario novoUsuario = new Usuario(usuario, senha, "usuario"); // Criação do objeto Usuario
+                Usuario novoUsuario = new Usuario(usuario, senha, "usuario");
                 UsuarioDAO usuarioDAO = new UsuarioDAO();
-                usuarioDAO.cadastrarUsuario(novoUsuario); // Chamada do método de cadastro
+                usuarioDAO.cadastrarUsuario(novoUsuario);
 
                 JOptionPane.showMessageDialog(CadastroView.this, "Cadastro realizado com sucesso!");
                 LoginView loginView = new LoginView();

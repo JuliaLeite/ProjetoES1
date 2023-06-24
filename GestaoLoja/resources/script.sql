@@ -21,3 +21,9 @@ CREATE TABLE funcionarios (
   cargo VARCHAR(255) NOT NULL,
   salario DECIMAL(10, 2) NOT NULL
 );
+CREATE TABLE registro_vendas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    produto VARCHAR(100) NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL,
+    data_venda DATETIME NOT NULL
+);
