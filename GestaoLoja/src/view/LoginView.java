@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginView extends JFrame {
     private JTextField textFieldUsuario;
@@ -48,9 +50,14 @@ public class LoginView extends JFrame {
                 if (nivelAcesso != null) {
                     // Redirecionar para o Menu se o usuário for adm
                     if (nivelAcesso.equals("admin")) {
-                        Connection connection = ConnectionFactory.getConnection();
-                        MenuPrincipal menuPrincipal = new MenuPrincipal(connection);
-                        menuPrincipal.setVisible(true);
+                try {
+                    Connection connection = ConnectionFactory.getConnection();
+
+                    MenuView menuView = new MenuView(connection);
+                    menuView.setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                         dispose();
                     } else {
                         CompraView compraView = new CompraView();
