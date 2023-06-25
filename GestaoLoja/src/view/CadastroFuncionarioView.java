@@ -17,13 +17,13 @@ import java.util.logging.Logger;
  *
  * @author jdelgado
  */
-public final class FuncionarioView extends javax.swing.JFrame {
+public final class CadastroFuncionarioView extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewJTable
      * @throws java.lang.Exception
      */
-    public FuncionarioView() throws Exception {
+    public CadastroFuncionarioView() throws Exception {
         initComponents();
         DefaultTableModel modelo = (DefaultTableModel) jTFuncionarios.getModel();
         jTFuncionarios.setRowSorter(new TableRowSorter(modelo));
@@ -222,7 +222,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
 
             readJTableForDesc(txtBuscaCargo.getText());
         } catch (Exception ex) {
-            Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -251,7 +251,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
             try {
                 fdao.update(f);
             } catch (Exception ex) {
-                Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             txtCargo.setText("");
@@ -260,7 +260,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
             try {
                 readJTable();
             } catch (Exception ex) {
-                Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
@@ -281,7 +281,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
             try {
                 fdao.delete(f);
             } catch (Exception ex) {
-                Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             txtfnome.setText("");
@@ -291,7 +291,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
             try {
                 readJTable();
             } catch (Exception ex) {
-                Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } else {
@@ -312,7 +312,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
         try {
             fdao.create(f);
         } catch (Exception ex) {
-            Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         txtfnome.setText("");
@@ -326,7 +326,7 @@ public final class FuncionarioView extends javax.swing.JFrame {
             //        Object[] dados = {txtDesc.getText(), txtQtd.getText(), txtSalario.getText()};
             //        dt.addRow(dados);
         } catch (Exception ex) {
-            Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ButtonCadastrarActionPerformed
 
@@ -338,9 +338,9 @@ public final class FuncionarioView extends javax.swing.JFrame {
             @Override
             public void run() {
                 try {
-                    new FuncionarioView().setVisible(true);
+                    new CadastroFuncionarioView().setVisible(true);
                 } catch (Exception ex) {
-                    Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

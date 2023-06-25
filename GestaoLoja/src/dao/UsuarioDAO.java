@@ -9,10 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Usuario;
 
 public class UsuarioDAO {
-    private Connection connection;
+    private final Connection connection;
 
     public UsuarioDAO() {
         this.connection = ConnectionFactory.getConnection();
@@ -111,5 +112,61 @@ public class UsuarioDAO {
         }
 
         return usuarios;
+    }
+    
+    public List<Usuario> readForDesc(String nivelAcesso) throws Exception {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        List<Usuario> usuarios = new ArrayList<>();
+
+        try {
+            pst = con.prepareStatement("SELECT * FROM usuarios WHERE nivel_acesso LIKE ?");
+            pst.setString(1, "%"+nivelAcesso+"%");
+            
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                Usuario usuario = new Usuario();
+
+                usuario.setId(rs.getInt("id"));
+	        usuario.setNome(rs.getString("nome"));
+	        usuario.setNivelAcesso(rs.getString("nivel de acesso"));
+                usuarios.add(usuario);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, pst, rs);
+        }
+
+        return usuarios;
+
+    }
+    
+    public void delete(Usuario u) throws Exception {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement pst = null;
+
+        try {
+            pst = con.prepareStatement("DELETE FROM usuarios WHERE id = ?");
+            pst.setInt(1, u.getId());
+
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, pst);
+        }
+
     }
 }

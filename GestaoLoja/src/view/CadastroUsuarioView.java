@@ -8,13 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Usuario;
 
-public class CadastroView extends JFrame {
+public class CadastroUsuarioView extends JFrame {
     private JTextField textFieldUsuario;
     private JPasswordField passwordFieldSenha;
     private JComboBox<String> comboBoxNivelAcesso;
     private JButton buttonCadastrar;
 
-    public CadastroView() {
+    public CadastroUsuarioView() {
         initComponents();
     }
 
@@ -33,8 +33,8 @@ public class CadastroView extends JFrame {
         passwordFieldSenha = new JPasswordField();
         JLabel labelNivelAcesso = new JLabel("Nível de Acesso:");
         comboBoxNivelAcesso = new JComboBox<>();
-        comboBoxNivelAcesso.addItem("Usuário");
-        comboBoxNivelAcesso.addItem("Administrador");
+        comboBoxNivelAcesso.addItem("usuário");
+        comboBoxNivelAcesso.addItem("admin");
         buttonCadastrar = new JButton("Cadastrar");
 
         buttonCadastrar.addActionListener(new ActionListener() {
@@ -49,7 +49,7 @@ public class CadastroView extends JFrame {
                 UsuarioDAO usuarioDAO = new UsuarioDAO();
                 usuarioDAO.cadastrarUsuario(novoUsuario);
 
-                JOptionPane.showMessageDialog(CadastroView.this, "Cadastro realizado com sucesso!");
+                JOptionPane.showMessageDialog(CadastroUsuarioView.this, "Cadastro realizado com sucesso!");
                 LoginView loginView = new LoginView();
                 loginView.setVisible(true);
                 dispose();
@@ -75,7 +75,7 @@ public class CadastroView extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                CadastroView cadastroView = new CadastroView();
+                CadastroUsuarioView cadastroView = new CadastroUsuarioView();
                 cadastroView.setVisible(true);
             }
         });

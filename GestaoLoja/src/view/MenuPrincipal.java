@@ -39,7 +39,7 @@ public class MenuPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 try {
-                    ProdutoView produtoView = new ProdutoView();
+                    CadastroProdutoView produtoView = new CadastroProdutoView();
                     produtoView.setVisible(true);
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -51,7 +51,7 @@ public class MenuPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 try {
-                    FuncionarioView funcionarioView = new FuncionarioView();
+                    CadastroFuncionarioView funcionarioView = new CadastroFuncionarioView();
                     funcionarioView.setVisible(true);
                 } catch (Exception ex) {
                     ex.printStackTrace();

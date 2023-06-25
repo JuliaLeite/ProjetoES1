@@ -71,7 +71,7 @@ public class LoginView extends JFrame {
         buttonCadastro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                CadastroView cadastroView = new CadastroView();
+                CadastroUsuarioView cadastroView = new CadastroUsuarioView();
                 cadastroView.setVisible(true);
                 dispose();
             }

@@ -17,13 +17,13 @@ import java.util.logging.Logger;
  *
  * @author jdelgado
  */
-public final class ProdutoView extends javax.swing.JFrame {
+public final class CadastroProdutoView extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewJTable
      * @throws java.lang.Exception
      */
-    public ProdutoView() throws Exception {
+    public CadastroProdutoView() throws Exception {
         initComponents();
         DefaultTableModel modelo = (DefaultTableModel) jTProdutos.getModel();
         jTProdutos.setRowSorter(new TableRowSorter(modelo));
@@ -238,7 +238,7 @@ public final class ProdutoView extends javax.swing.JFrame {
 
             readJTableForDesc(txtBuscaDesc.getText());
         } catch (Exception ex) {
-            Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroProdutoView.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -268,7 +268,7 @@ public final class ProdutoView extends javax.swing.JFrame {
             try {
                 dao.update(p);
             } catch (Exception ex) {
-                Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CadastroProdutoView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             txtDesc.setText("");
@@ -278,7 +278,7 @@ public final class ProdutoView extends javax.swing.JFrame {
             try {
                 readJTable();
             } catch (Exception ex) {
-                Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CadastroProdutoView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
@@ -299,7 +299,7 @@ public final class ProdutoView extends javax.swing.JFrame {
             try {
                 dao.delete(p);
             } catch (Exception ex) {
-                Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CadastroProdutoView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             txtpnome.setText("");
@@ -310,7 +310,7 @@ public final class ProdutoView extends javax.swing.JFrame {
             try {
                 readJTable();
             } catch (Exception ex) {
-                Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CadastroProdutoView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } else {
@@ -332,7 +332,7 @@ public final class ProdutoView extends javax.swing.JFrame {
         try {
             dao.create(p);
         } catch (Exception ex) {
-            Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroProdutoView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         txtpnome.setText("");
@@ -347,7 +347,7 @@ public final class ProdutoView extends javax.swing.JFrame {
             //        Object[] dados = {txtDesc.getText(), txtQtd.getText(), txtPreco.getText()};
             //        dtmProdutos.addRow(dados);
         } catch (Exception ex) {
-            Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroProdutoView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ButtonCadastrarActionPerformed
 
@@ -362,9 +362,9 @@ public final class ProdutoView extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new ProdutoView().setVisible(true);
+                    new CadastroProdutoView().setVisible(true);
                 } catch (Exception ex) {
-                    Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CadastroProdutoView.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
