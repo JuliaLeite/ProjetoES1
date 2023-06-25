@@ -13,6 +13,7 @@ public class MenuPrincipal extends JFrame {
     private JMenu menuOperacoes;
     private JMenuItem jMenuItemProdutos;
     private JMenuItem jMenuItemFuncionarios;
+    private JMenuItem jMenuItemUsuarios;
     private JMenuItem jMenuItemCaixa;
     private JMenuItem jMenuItemCompra;
 
@@ -29,6 +30,7 @@ public class MenuPrincipal extends JFrame {
         menuOperacoes = new JMenu("Operações");
         jMenuItemProdutos = new JMenuItem("Produtos");
         jMenuItemFuncionarios = new JMenuItem("Funcionários");
+        jMenuItemUsuarios = new JMenuItem("Usuários");
         jMenuItemCaixa = new JMenuItem("Caixa");
         jMenuItemCompra = new JMenuItem("Compra");
 
@@ -53,6 +55,18 @@ public class MenuPrincipal extends JFrame {
                 try {
                     CadastroFuncionarioView funcionarioView = new CadastroFuncionarioView();
                     funcionarioView.setVisible(true);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        
+        jMenuItemUsuarios.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                try {
+                    AcompanhamentoUsuarioView usuarioView = new AcompanhamentoUsuarioView();
+                    usuarioView.setVisible(true);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -85,6 +99,7 @@ public class MenuPrincipal extends JFrame {
 
         menuCadastros.add(jMenuItemProdutos);
         menuCadastros.add(jMenuItemFuncionarios);
+        menuCadastros.add(jMenuItemUsuarios);
         menuOperacoes.add(jMenuItemCaixa);
         menuOperacoes.add(jMenuItemCompra);
 
