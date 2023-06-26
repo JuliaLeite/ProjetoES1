@@ -104,11 +104,11 @@ public final class CadastroProdutoView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "DESCRIÇÃO", "QTD", "PREÇO"
+                "ID", "NOME", "DESCRIÇÃO", "QTD", "PREÇO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

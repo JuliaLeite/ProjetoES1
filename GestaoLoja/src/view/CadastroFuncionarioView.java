@@ -50,13 +50,32 @@ public final class CadastroFuncionarioView extends javax.swing.JFrame {
         }
 
     }
-    public void readJTableForDesc(String desc) throws Exception {
+    public void readJTableForCargo(String cargo) throws Exception {
         
         DefaultTableModel modelo = (DefaultTableModel) jTFuncionarios.getModel();
         modelo.setNumRows(0);
       FuncionarioDAO fdao = new FuncionarioDAO();
 
-        for (Funcionario f : fdao.readForDesc(desc)) {
+        for (Funcionario f : fdao.readForCargo(cargo)) {
+
+            modelo.addRow(new Object[]{
+                f.getId(),
+                f.getNome(),
+                f.getCargo(),
+                f.getSalario()
+            });
+
+        }
+
+    }
+    
+        public void readJTableForNome(String nome) throws Exception {
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTFuncionarios.getModel();
+        modelo.setNumRows(0);
+      FuncionarioDAO fdao = new FuncionarioDAO();
+
+        for (Funcionario f : fdao.readForNome(nome)) {
 
             modelo.addRow(new Object[]{
                 f.getId(),
@@ -148,6 +167,12 @@ public final class CadastroFuncionarioView extends javax.swing.JFrame {
         LabelCargo.setText("Cargo");
         getContentPane().add(LabelCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 120, -1));
         getContentPane().add(txtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 213, 25));
+
+        txtBuscaCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscaCargoActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtBuscaCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 327, -1));
 
         ButtonBuscar.setText("Buscar");
@@ -220,7 +245,8 @@ public final class CadastroFuncionarioView extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
 
-            readJTableForDesc(txtBuscaCargo.getText());
+            readJTableForCargo(txtBuscaCargo.getText());
+            readJTableForNome(txtBuscaCargo.getText());
         } catch (Exception ex) {
             Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -329,6 +355,10 @@ public final class CadastroFuncionarioView extends javax.swing.JFrame {
             Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ButtonCadastrarActionPerformed
+
+    private void txtBuscaCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscaCargoActionPerformed
 
     /**
      * @param args the command line arguments

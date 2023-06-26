@@ -114,7 +114,7 @@ public class UsuarioDAO {
         return usuarios;
     }
     
-    public List<Usuario> readForDesc(String nivelAcesso) throws Exception {
+    public List<Usuario> readForNA(String nivel_acesso) throws Exception {
 
         Connection con = ConnectionFactory.getConnection();
         
@@ -125,7 +125,7 @@ public class UsuarioDAO {
 
         try {
             pst = con.prepareStatement("SELECT * FROM usuarios WHERE nivel_acesso LIKE ?");
-            pst.setString(1, "%"+nivelAcesso+"%");
+            pst.setString(1, "%"+nivel_acesso+"%");
             
             rs = pst.executeQuery();
 
@@ -135,7 +135,42 @@ public class UsuarioDAO {
 
                 usuario.setId(rs.getInt("id"));
 	        usuario.setNome(rs.getString("nome"));
-	        usuario.setNivelAcesso(rs.getString("nivel de acesso"));
+	        usuario.setNivelAcesso(rs.getString("nivel_acesso"));
+                usuarios.add(usuario);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, pst, rs);
+        }
+
+        return usuarios;
+
+    }
+    
+        public List<Usuario> readForNome(String nome) throws Exception {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        List<Usuario> usuarios = new ArrayList<>();
+
+        try {
+            pst = con.prepareStatement("SELECT * FROM usuarios WHERE nome LIKE ?");
+            pst.setString(1, "%"+nome+"%");
+            
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                Usuario usuario = new Usuario();
+
+                usuario.setId(rs.getInt("id"));
+	        usuario.setNome(rs.getString("nome"));
+	        usuario.setNivelAcesso(rs.getString("nivel_acesso"));
                 usuarios.add(usuario);
             }
 

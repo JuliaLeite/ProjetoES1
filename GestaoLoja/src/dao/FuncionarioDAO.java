@@ -80,7 +80,7 @@ public class FuncionarioDAO {
         return funcionarios;
 
     }
-    public List<Funcionario> readForDesc(String desc) throws Exception {
+    public List<Funcionario> readForCargo(String cargo) throws Exception {
 
         Connection con = ConnectionFactory.getConnection();
         
@@ -90,8 +90,44 @@ public class FuncionarioDAO {
         List<Funcionario> funcionarios = new ArrayList<>();
 
         try {
-            pst = con.prepareStatement("SELECT * FROM funcionarios WHERE descricao LIKE ?");
-            pst.setString(1, "%"+desc+"%");
+            pst = con.prepareStatement("SELECT * FROM funcionarios WHERE cargo LIKE ?");
+            pst.setString(1, "%"+cargo+"%");
+            
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                Funcionario Funcionario = new Funcionario();
+
+	        Funcionario.setId(rs.getInt("id"));
+	        Funcionario.setNome(rs.getString("nome"));
+	        Funcionario.setCargo(rs.getString("cargo"));
+	        Funcionario.setSalario(rs.getDouble("salario"));
+                funcionarios.add(Funcionario);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, pst, rs);
+        }
+
+        return funcionarios;
+
+    }
+    
+    public List<Funcionario> readForNome(String nome) throws Exception {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        List<Funcionario> funcionarios = new ArrayList<>();
+
+        try {
+            pst = con.prepareStatement("SELECT * FROM funcionarios WHERE nome LIKE ?");
+            pst.setString(1, "%"+nome+"%");
             
             rs = pst.executeQuery();
 
