@@ -270,7 +270,8 @@ public final class CadastroProdutoView extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(CadastroProdutoView.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
+            txtpnome.setText("");
             txtDesc.setText("");
             txtQtd.setText("");
             txtPreco.setText("");

@@ -11,6 +11,7 @@ import model.Usuario;
 import dao.UsuarioDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -96,7 +97,8 @@ public final class AcompanhamentoUsuarioView extends javax.swing.JFrame {
         LabelTitutlo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         txtBuscar = new javax.swing.JTextField();
-        ButtonBuscar = new javax.swing.JButton();
+        ButtonExcluir = new javax.swing.JButton();
+        ButtonBuscar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -143,13 +145,21 @@ public final class AcompanhamentoUsuarioView extends javax.swing.JFrame {
         });
         getContentPane().add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 360, -1));
 
-        ButtonBuscar.setText("Buscar");
-        ButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+        ButtonExcluir.setText("Excluir");
+        ButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonBuscarActionPerformed(evt);
+                ButtonExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(ButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, -1, -1));
+        getContentPane().add(ButtonExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
+
+        ButtonBuscar1.setText("Buscar");
+        ButtonBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonBuscar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ButtonBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -169,8 +179,33 @@ public final class AcompanhamentoUsuarioView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
 
-    private void ButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarActionPerformed
-        try {
+    private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
+        if (jTUsuarios.getSelectedRow() != -1) {
+
+                  Usuario u = new Usuario();
+                  UsuarioDAO udao = new UsuarioDAO();
+
+                    u.setId((int) jTUsuarios.getValueAt(jTUsuarios.getSelectedRow(), 0));
+
+                    try {
+                        udao.delete(u);
+                    } catch (Exception ex) {
+                        Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        readJTable();
+                    } catch (Exception ex) {
+                        Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione um para excluir.");
+                }
+
+    }//GEN-LAST:event_ButtonExcluirActionPerformed
+
+    private void ButtonBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscar1ActionPerformed
+                try {
             // TODO add your handling code here:
 
             readJTableForNome(txtBuscar.getText());
@@ -178,9 +213,7 @@ public final class AcompanhamentoUsuarioView extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(CadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-                // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonBuscarActionPerformed
+    }//GEN-LAST:event_ButtonBuscar1ActionPerformed
 
 
 
@@ -202,7 +235,8 @@ public final class AcompanhamentoUsuarioView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonBuscar;
+    private javax.swing.JButton ButtonBuscar1;
+    private javax.swing.JButton ButtonExcluir;
     private javax.swing.JLabel LabelTitutlo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
