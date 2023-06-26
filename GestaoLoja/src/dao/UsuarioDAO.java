@@ -34,7 +34,67 @@ public class UsuarioDAO {
         } finally {
             ConnectionFactory.closeConnection(connection, stmt);
         }
+        
+        
     }
+    
+    public void create(Usuario f) throws Exception {
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement pst = null;
+
+        try {
+            pst = con.prepareStatement("INSERT INTO usuarios (nome, senha, nivel_acesso) VALUES (?,?,?)");
+            pst.setString(1, f.getNome());
+            pst.setString(2, f.getSenha());
+            pst.setString(3, f.getNivelAcesso());
+
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, pst);
+        }
+
+    }
+    
+    public List<Usuario> read() throws Exception {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        List<Usuario> usuarios = new ArrayList<>();
+
+        try {
+            pst = con.prepareStatement("SELECT * FROM usuarios");
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                Usuario Usuario = new Usuario();
+
+	        Usuario.setId(rs.getInt("id"));
+	        Usuario.setNome(rs.getString("nome"));
+	        Usuario.setSenha(rs.getString("senha"));
+	        Usuario.setNivelAcesso(rs.getString("nivel_acesso"));
+                usuarios.add(Usuario);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, pst, rs);
+        }
+
+        return usuarios;
+
+    }
+
     
     public static boolean isUsuarioAdmin(String usuario) {
         boolean isAdmin = false;
@@ -184,6 +244,30 @@ public class UsuarioDAO {
 
     }
     
+        public void update(Usuario u) throws Exception {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement pst = null;
+
+        try {
+            pst = con.prepareStatement("UPDATE usuarios SET nome = ?, senha = ? , nivel_acesso = ?  WHERE id = ?");
+
+            pst.setString(1, u.getNome());
+            pst.setString(2, u.getSenha());
+            pst.setString(3, u.getNivelAcesso());
+            pst.setInt(4, u.getId());
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, pst);
+        }
+
+    }
+        
     public void delete(Usuario u) throws Exception {
 
         Connection con = ConnectionFactory.getConnection();

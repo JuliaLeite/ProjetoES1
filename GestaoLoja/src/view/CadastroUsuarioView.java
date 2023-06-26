@@ -33,7 +33,7 @@ public class CadastroUsuarioView extends JFrame {
         passwordFieldSenha = new JPasswordField();
         JLabel labelNivelAcesso = new JLabel("Nível de Acesso:");
         comboBoxNivelAcesso = new JComboBox<>();
-        comboBoxNivelAcesso.addItem("usuário");
+        comboBoxNivelAcesso.addItem("user");
         comboBoxNivelAcesso.addItem("admin");
         buttonCadastrar = new JButton("Cadastrar");
 
