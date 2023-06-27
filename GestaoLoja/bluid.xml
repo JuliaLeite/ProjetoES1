@@ -1,0 +1,41 @@
+<project name="GestaoLoja" default="run-tests" basedir=".">
+
+    <property name="src.dir" value="src" />
+    <property name="build.dir" value="build" />
+    <property name="classes.dir" value="${build.dir}/classes" />
+    <property name="test.dir" value="${build.dir}/test" />
+    <property name="test.classes.dir" value="${test.dir}/classes" />
+
+    <!-- Compilar o código-fonte -->
+    <target name="compile" description="Compila o código-fonte">
+        <mkdir dir="${classes.dir}" />
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false" />
+    </target>
+
+    <!-- Compilar os testes -->
+    <target name="compile-tests" depends="compile" description="Compila os testes">
+        <mkdir dir="${test.classes.dir}" />
+        <javac srcdir="${src.dir}" destdir="${test.classes.dir}" includeantruntime="false">
+            <classpath>
+                <pathelement path="${classes.dir}" />
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Executar os testes -->
+    <target name="run-tests" depends="compile-tests" description="Executa os testes">
+        <junit printsummary="on" fork="true">
+            <classpath>
+                <pathelement path="${test.classes.dir}" />
+                <pathelement path="${classes.dir}" />
+            </classpath>
+            <batchtest>
+                <fileset dir="${src.dir}">
+                    <include name="**/teste/*.java" />
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+</project>
+
