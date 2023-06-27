@@ -7,8 +7,8 @@ Este repositório contém o código-fonte e a documentação para um projeto de 
 O projeto possui as seguintes funcionalidades principais:
 
 1. Cadastro de Usuarios e Gerência:
-- Adição, edição e remoção de usuários;
-- Registro de informações como nome, senha.
+- Adição e remoção de usuários;
+- Registro de informações como nome, senha e nível de acesso.
 
 2. Cadastro de Funcionários:
 - Adição, edição e remoção de funcionários;
@@ -20,7 +20,7 @@ O projeto possui as seguintes funcionalidades principais:
 
 4. Controle de Caixa:
 - Registro de vendas realizadas;
-- Atualização do saldo de caixa;
+- Saldo de caixa;
 
 ## Tecnologias Utilizadas
 O projeto foi desenvolvido utilizando as seguintes tecnologias:
